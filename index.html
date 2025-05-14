@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planner Semanal - Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+      padding: 30px;
+    }
+    h2 { text-align: center; margin-bottom: 20px; }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    input { border: 1px solid #ccc; }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover { background-color: #45a049; }
+    .toggle { text-align: center; margin-top: 15px; cursor: pointer; color: #333; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="login-form">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Senha" required>
+      <button onclick="login()">Entrar</button>
+      <div class="toggle" onclick="toggleForms()">Criar uma conta</div>
+    </div>
+
+    <div id="register-form" class="hidden">
+      <h2>Cadastro</h2>
+      <input type="text" id="reg-name" placeholder="Nome completo" required>
+      <input type="email" id="reg-email" placeholder="Email" required>
+      <input type="date" id="reg-birth" placeholder="Data de nascimento" required>
+      <input type="password" id="reg-password" placeholder="Senha" required>
+      <button onclick="register()">Criar Conta</button>
+      <div class="toggle" onclick="toggleForms()">Já tem uma conta? Entrar</div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForms() {
+      document.getElementById('login-form').classList.toggle('hidden');
+      document.getElementById('register-form').classList.toggle('hidden');
+    }
+
+    async function register() {
+      const name = document.getElementById("reg-name").value;
+      const email = document.getElementById("reg-email").value;
+      const birth = document.getElementById("reg-birth").value;
+      const password = document.getElementById("reg-password").value;
+
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, birth, password }),
+      });
+
+      const data = await response.json();
+      alert(data.message);
+    }
+
+    async function login() {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message);
+        window.location.href = "Plannermtfoda.html"; // Redireciona ao site novo após login
+      } else {
+        alert(data.message);
+      }
+    }
+  </script>
+</body>
+</html>
