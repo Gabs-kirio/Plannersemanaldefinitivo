@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.planner {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 20px;
+}
+
+.day {
+    padding: 10px;
+    border: 1px solid #000;
+    background: #f4f4f4;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+/* Tema Escuro */
+.dark-mode {
+    background: black;
+    color: white;
+}
+
+.dark-mode .day {
+    background: #333;
+    border-color: white;
+}
+
+/* Botão de Tema */
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#theme-menu {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background: #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Começa escondido */
+    transition: opacity 0.3s ease-in-out;
+}
+
+#theme-menu.show {
+    display: block; /* Mostra quando a classe "show" for adicionada */
+    opacity: 1;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+.add-task {
+    background: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-task:hover {
+    background: #005f73;
+}
+.delete-task {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: red;
+    margin-left: 10px;
+}
+
+.delete-task:hover {
+    color: darkred;
+}
+
