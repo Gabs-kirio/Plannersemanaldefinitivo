@@ -79,3 +79,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadTasks(); // Carrega todas as tarefas ao iniciar a página
 });
+function showToast(message, duration = 3000) {
+    // Verifica se o container de toast já existe
+    let toastContainer = document.getElementById("toast-container");
+    if (!toastContainer) {
+        toastContainer = document.createElement("div");
+        toastContainer.id = "toast-container";
+        document.body.appendChild(toastContainer);
+    }
+
+    // Cria a notificação
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Após (duration - 500) milissegundos, inicia o fade out
+    setTimeout(() => {
+        toast.style.opacity = 0;
+        toast.style.transform = "translateY(20px)";
+    }, duration - 500);
+
+    // Remove a toast do DOM após o tempo total especificado
+    setTimeout(() => {
+        toast.remove();
+    }, duration);
+}
+document.querySelectorAll(".add-task").forEach(button => {
+    button.addEventListener("click", function () {
+        let dayId = this.getAttribute("data-day");
+        let taskList = document.getElementById(dayId);
+        let newTask = createTaskItem();
+        taskList.appendChild(newTask);
+        saveTasks();
+        showToast("Tarefa adicionada!");
+    });
+});
+deleteButton.addEventListener("click", function () {
+    li.remove();
+    saveTasks();
+    showToast("Tarefa excluída!");
+});
