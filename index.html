@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="styleplanner.css">
 </head>
 <body>
+    <!-- Botão de Temas (já existente) -->
     <button id="theme-toggle">☼</button>
     <div id="theme-menu" class="hidden">
         <button id="light-theme">Tema Claro</button>
         <button id="dark-theme">Tema Escuro</button>
     </div>
-
+  
+    <!-- Novo Botão para Modos de Organização (canto superior esquerdo) -->
+    <button id="mode-toggle">Modo</button>
+    <div id="mode-menu" class="hidden">
+        <button id="mode-bloco">Bloco de Notas</button>
+        <button id="mode-diario">Diário</button>
+        <button id="mode-lista">Lista</button>
+    </div>
+  
     <h1>Planner Semanal</h1>
-    <div class="planner">
+    <div class="planner bloco">
         <div class="day">
             <h3>Segunda</h3>
             <ul id="tasks-segunda">
@@ -24,49 +33,39 @@
         </div>
         <div class="day">
             <h3>Terça</h3>
-            <ul id="tasks-terca">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-terca"></ul>
             <button class="add-task" data-day="tasks-terca">➕</button>
         </div>
         <div class="day">
             <h3>Quarta</h3>
-            <ul id="tasks-quarta">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-quarta"></ul>
             <button class="add-task" data-day="tasks-quarta">➕</button>
         </div>
         <div class="day">
             <h3>Quinta</h3>
-            <ul id="tasks-quinta">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-quinta"></ul>
             <button class="add-task" data-day="tasks-quinta">➕</button>
         </div>
         <div class="day">
             <h3>Sexta</h3>
-            <ul id="tasks-sexta">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-sexta"></ul>
             <button class="add-task" data-day="tasks-sexta">➕</button>
         </div>
         <div class="day">
             <h3>Sábado</h3>
-            <ul id="tasks-sabado">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-sabado"></ul>
             <button class="add-task" data-day="tasks-sabado">➕</button>
         </div>
         <div class="day">
             <h3>Domingo</h3>
-            <ul id="tasks-domingo">
-                <!-- As tarefas adicionadas aparecerão aqui -->
-            </ul>
+            <ul id="tasks-domingo"></ul>
             <button class="add-task" data-day="tasks-domingo">➕</button>
         </div>
     </div>
-
+  
+    <!-- Scripts -->
     <script src="theme.js"></script>
     <script src="tasks.js"></script>
-</body>
+    <script src="modes.js"></script>
+
 </html>
