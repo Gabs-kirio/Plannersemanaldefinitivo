@@ -1,9 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    transition: background 0.3s, color 0.3s;
-}
-
 .planner {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -11,29 +5,11 @@ body {
     margin: 20px;
 }
 
-.day {
-    padding: 10px;
-    border: 1px solid #000;
-    background: #f4f4f4;
-}
-
 textarea {
     width: 100%;
     height: 100px;
 }
 
-/* Tema Escuro */
-.dark-mode {
-    background: black;
-    color: white;
-}
-
-.dark-mode .day {
-    background: #333;
-    border-color: white;
-}
-
-/* Botão de Tema */
 #theme-toggle {
     position: fixed;
     top: 10px;
@@ -104,3 +80,205 @@ input[type="checkbox"] {
     color: darkred;
 }
 
+@media (max-width: 768px) {
+    .planner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .planner {
+        grid-template-columns: 1fr;
+    }
+}
+/* Estilos para a Toast Notification */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toast {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ------------------------------------------ */
+/* Variáveis (já existentes, inclusive do tema) */
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #000;
+    --day-bg: #f4f4f4;
+    --border-color: #000;
+    --button-bg: #008CBA;
+    --button-hover: #005f73;
+    /* Variáveis para os quadros (temas e modos) */
+    --frame-bg: #f4f4f4;
+    --frame-button-bg: #000;
+    --frame-button-text: #fff;
+    --frame-button-hover-bg: #f4f4f4;
+    --frame-button-hover-text: #000;
+}
+
+/* Para o Tema Escuro, por exemplo */
+.dark-mode {
+    --bg-color: #000;
+    --text-color: #fff;
+    --day-bg: #333;
+    --border-color: #fff;
+    --button-bg: #333;
+    --button-hover: #555;
+    --frame-bg: #000;
+    --frame-button-bg: #fff;
+    --frame-button-text: #000;
+    --frame-button-hover-bg: #000;
+    --frame-button-hover-text: #fff;
+}
+
+/* ------------------------------------------ */
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Planner Estilo padrão em Bloco (7 colunas) */
+.planner.bloco {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+/* Modo Lista: Tarefas em layout vertical */
+.planner.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.planner.lista .day {
+    width: 100%;
+}
+.planner.lista .day ul li {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--day-bg);
+}
+
+/* (No modo Diário, a lógica de exibição é feita via JS - apenas ocultamos/exibimos as .day) */
+
+/* ------------------------------------------ */
+/* Botão e Menu de Temas (já existentes) */
+/* ... [consulte o código anterior para os temas] ... */
+
+/* ------------------------------------------ */
+/* Botão e Menu de Modos de Organização */
+/* Botão de Modos (canto superior esquerdo) */
+#mode-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--frame-button-bg);
+    color: var(--frame-button-text);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#mode-toggle:hover {
+    background-color: var(--frame-button-hover-bg);
+    color: var(--frame-button-hover-text);
+}
+
+/* Menu de Modos */
+#mode-menu {
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    background-color: var(--frame-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+#mode-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Botões do Menu de Modos */
+#mode-menu button {
+    background-color: var(--frame-button-bg);
+    color: var(--frame-button-text);
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#mode-menu button:hover {
+    background-color: var(--frame-button-hover-bg);
+    color: var(--frame-button-hover-text);
+}
+
+/* ------------------------------------------ */
+/* Botão para seleção dos dias no modo Diário */
+#diario-days {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+#diario-days button {
+    background-color: var(--frame-button-bg);
+    color: var(--frame-button-text);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#diario-days button:hover {
+    background-color: var(--frame-button-hover-bg);
+    color: var(--frame-button-hover-text);
+}
+/* Modo Diário: exibe o único dia ocupando toda a largura */
+.planner.diario {
+    display: block;
+}
+
+.planner.diario .day {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+/* Centraliza o conteúdo de cada tarefa (li) somente no modo Diário */
+.planner.diario .day ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
