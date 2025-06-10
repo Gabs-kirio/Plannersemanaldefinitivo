@@ -62,10 +62,26 @@
             <button class="add-task" data-day="tasks-domingo">➕</button>
         </div>
     </div>
-  
+    <div id="habit-container" class="hidden">
+        <h1>Modo Hábito</h1>
+        <div id="habit-counter">
+            <p><strong>Contador de Tempo:</strong></p>
+            <div id="habit-entry">
+                <label for="habit-input"><strong>Hábito que quero manter:</strong></label>
+                <input type="text" id="habit-input" placeholder="Digite seu hábito..." />
+                <button id="save-habit">Salvar</button>
+                <p id="habit-display"></p>
+            </div>
+            
+            <p id="time-display">0 dias, 00:00:00</p>
+        </div>
+        <button id="start-counter">Iniciar Contagem</button>
+        <button id="reset-counter">Resetar Contagem</button>
+    </div>
     <!-- Scripts -->
     <script src="theme.js"></script>
     <script src="tasks.js"></script>
     <script src="modes.js"></script>
+    <script src="functions.js"></script>
 
 </html>
