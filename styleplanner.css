@@ -282,3 +282,102 @@ body {
     align-items: center;
     justify-content: center;
 }
+/* Botão de troca de temas */
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--frame-button-bg);
+    color: var(--frame-button-text);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover utilizando a mesma configuração dos botões do menu de temas */
+#theme-toggle:hover {
+    background-color: var(--frame-button-hover-bg);
+    color: var(--frame-button-hover-text);
+}
+/* Quadro de temas */
+#theme-menu {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background-color: var(--frame-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Exibir quadro de temas quando ativo */
+#theme-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos dos botões dentro do quadro de temas */
+#theme-menu button {
+    background-color: var(--frame-button-bg);
+    color: var(--frame-button-text);
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito hover dos botões do quadro de temas */
+#theme-menu button:hover {
+    background-color: var(--frame-button-hover-bg);
+    color: var(--frame-button-hover-text);
+}
+/* Quadro de entrada do hábito */
+#habit-entry {
+    background-color: var(--frame-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#habit-input {
+    padding: 8px;
+    width: 70%;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+#save-habit {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#save-habit:hover {
+    background-color: var(--button-hover);
+}
+
+/* Exibição do hábito salvo */
+#habit-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text-color);
+}
