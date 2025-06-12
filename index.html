@@ -7,6 +7,34 @@
     <link rel="stylesheet" href="styleplanner.css">
 </head>
 <body>
+ <!-- Overlay de Login (cobre toda a tela) -->
+<div id="login-overlay">
+  <!-- Tela de Login -->
+  <div id="login-screen">
+    <h2>Login</h2>
+    <input type="email" id="login-email" placeholder="Digite seu e-mail" required>
+    <input type="password" id="login-password" placeholder="Digite sua senha" required>
+    <button id="login-button">Entrar</button>
+    <p>Não tem uma conta? <a href="#" id="show-register">Registre-se</a></p>
+  </div>
+
+  <!-- Tela de Registro -->
+  <div id="register-screen" class="hidden">
+    <h2>Registro</h2>
+    <input type="email" id="register-email" placeholder="Digite seu e-mail" required>
+    <input type="password" id="register-password" placeholder="Crie uma senha" required>
+    <button id="register-button">Registrar</button>
+    <p>Já tem uma conta? <a href="#" id="show-login">Faça login</a></p>
+  </div>
+</div>
+
+<!-- Conteúdo do Planner -->
+<div id="planner-content">
+  <h1>Bem-vindo ao Planner Semanal!</h1>
+  <p>Seu conteúdo personalizado aparecerá aqui.</p>
+  <!-- Resto do conteúdo do planner -->
+</div>
+
     <!-- Botão de Temas (já existente) -->
     <button id="theme-toggle">☼</button>
     <div id="theme-menu" class="hidden">
@@ -62,21 +90,62 @@
             <button class="add-task" data-day="tasks-domingo">➕</button>
         </div>
     </div>
-    <div id="habit-container" class="hidden">
-        <h1>Modo Hábito</h1>
-        <div id="habit-counter">
-            <p><strong>Contador de Tempo:</strong></p>
-            <div id="habit-entry">
-                <label for="habit-input"><strong>Hábito que quero manter:</strong></label>
-                <input type="text" id="habit-input" placeholder="Digite seu hábito..." />
-                <button id="save-habit">Salvar</button>
-                <p id="habit-display"></p>
-            </div>
-            
-            <p id="time-display">0 dias, 00:00:00</p>
-        </div>
-        <button id="start-counter">Iniciar Contagem</button>
-        <button id="reset-counter">Resetar Contagem</button>
+  
+   <div id="habit-container">
+  <h1>Modo Hábito</h1>
+
+  <!-- Quadro de entrada do hábito -->
+  <div id="habit-entry">
+    <label for="habit-input"><strong>Hábito que quero manter:</strong></label>
+    <input type="text" id="habit-input" placeholder="Digite seu hábito..." />
+    <br>
+    <label for="habit-color"><strong>Escolha uma cor:</strong></label>
+    <input type="color" id="habit-color" value="#ff0000" />
+    <br>
+    <label for="habit-icon"><strong>Escolha um ícone:</strong></label>
+    <select id="habit-icon">
+      <option value="🔥">🔥</option>
+      <option value="💪">💪</option>
+      <option value="📚">📚</option>
+      <option value="🌱">🌱</option>
+
+      <!-- Adicione outras opções conforme desejar -->
+    </select>
+    <br>
+    <label for="habit-category"><strong>Categoria:</strong></label>
+    <input type="text" id="habit-category" placeholder="Ex: Saúde, Produtividade..." />
+    <br>
+    <button id="save-habit">Salvar</button>
+  </div>
+
+  <!-- Lista de hábitos -->
+  <div id="habit-list"></div>
+  <!-- Nova seção: Moedas -->
+  <div id="coins-container">
+    <h2>Moedas: <span id="coins-count">0</span></h2>
+  </div>
+  
+  <!-- Nova seção: Gráfico -->
+  <div id="chart-container">
+    <canvas id="habits-chart" width="400" height="200"></canvas>
+  </div>
+</div>
+
+<!-- Inclua o Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</div>
+<!-- Botão de Loja (ícone) -->
+<button id="store-toggle">🏬 Loja</button>
+
+<!-- Quadro da Loja -->
+<div id="store-menu" class="hidden">
+  <div class="store-item">
+    <p><strong>Wanderley</strong> - 10 moedas</p>
+    <button id="buy-wanderley">Comprar</button>
+  </div>
+</div>
+
+
     </div>
     <!-- Scripts -->
     <script src="theme.js"></script>
