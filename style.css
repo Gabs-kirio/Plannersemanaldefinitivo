@@ -1,0 +1,74 @@
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .semana {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 15px;
+    }
+    .dia {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .dia h2 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    li {
+      background: #eef1f5;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li.concluida span {
+      text-decoration: line-through;
+      color: gray;
+    }
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .adicionar {
+      width: 100%;
+      display: flex;
+      margin-top: 10px;
+    }
+    .adicionar input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px 0 0 6px;
+    }
+    .adicionar button {
+      background: #4caf50;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 0 6px 6px 0;
+    }
+    .limpar-dia {
+      margin-top: 10px;
+      background: #e53935;
+      color: white;
+      padding: 6px;
+      border-radius: 6px;
+      width: 100%;
+    }
